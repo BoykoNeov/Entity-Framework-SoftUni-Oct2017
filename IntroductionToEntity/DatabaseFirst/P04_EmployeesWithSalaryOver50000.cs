@@ -4,9 +4,9 @@
     using System.Linq;
     using P02_DatabaseFirst.Data;
 
-    public class P03_EmployeesFullInfo
+    public class P04_EmployeesWithSalaryOver50000
     {
-        public static void GetEmployeesFullInfo()
+        public static void GetEmployessWithSalaryOver50000()
         {
             var dbContext = new SoftUniContext();
 
@@ -14,18 +14,16 @@
             {
                 var emp = dbContext.Employees.Select(e => new
                 {
-                    e.EmployeeId,
                     e.FirstName,
-                    e.LastName,
-                    e.MiddleName,
-                    e.JobTitle,
                     e.Salary
-                }).AsEnumerable()
-                  .OrderBy(e => e.EmployeeId);
+                })
+                  .Where(e => e.Salary > 50000)
+                  .OrderBy(e => e.FirstName)
+                  .AsEnumerable();
 
                 foreach (var e in emp)
                 {
-                    Console.WriteLine($"{e.FirstName} {e.LastName} {e.MiddleName} {e.JobTitle} {e.Salary:f2}");
+                    Console.WriteLine(e.FirstName);
                 }
             }
         }

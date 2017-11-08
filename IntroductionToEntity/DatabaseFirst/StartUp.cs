@@ -5,9 +5,19 @@
         public static void Main()
         {
             // Task 3
-            P03_EmployeesFullInfo.GetEmployeesFullInfo();
+            // P03_EmployeesFullInfo.GetEmployeesFullInfo();
 
+            // Task 4
+            // P04_EmployeesWithSalaryOver50000.GetEmployessWithSalaryOver50000();
 
+            // Task 5
+            // P05_EmployeesFromResearchAndDevelopment.GetEmployeesFromResearchAndDevelopment();
+
+            // Task 6
+            // P06_AddingNewAddressAndUpdatingClass.AddingNewAddressAndUpdatingClass();
+
+            // Task 7
+            P07_EmployeesAndProjects.PrintEmployeesAndProjects();
         }
     }
 }
