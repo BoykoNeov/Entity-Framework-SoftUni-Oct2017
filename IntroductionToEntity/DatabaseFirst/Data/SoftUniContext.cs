@@ -16,6 +16,8 @@ namespace P02_DatabaseFirst.Data
 
         public SoftUniContext(DbContextOptions options) : base(options) { }
 
+        public SoftUniContext() { }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
