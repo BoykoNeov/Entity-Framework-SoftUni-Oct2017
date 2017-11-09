@@ -2,9 +2,10 @@
 {
     using P02_DatabaseFirst.Data;
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
-
+ 
     public class P07_EmployeesAndProjects
     {
         /// <summary>
@@ -16,28 +17,9 @@
         public static void PrintEmployeesAndProjects()
         {
             var dbContext = new SoftUniContext();
-
             using (dbContext)
             {
-                // not the best way to solve this problem (and also i havent properly understood the requirement to include ALL projects, not only those starting between
-                // 2001 and 2003 - this is a condition only for the employee
-                // var employees = (
-                //                from e in dbContext.Employees.Take(30)
-                //                join ep in dbContext.EmployeesProjects on e.EmployeeId equals ep.EmployeeId
-                //                join p in dbContext.Projects on ep.ProjectId equals p.ProjectId
-                //                where (p.StartDate.Year >= 2001 && p.StartDate.Year <= 2003)
-                //                select new
-                //                {
-                //                    employeeFirstName = e.FirstName,
-                //                    employeeLastName = e.LastName,
-                //                    managerFirstName = e.Manager.FirstName,
-                //                    managerLastName = e.Manager.LastName,
-                //                    projectName = p.Name,
-                //                    projectStartDate = p.StartDate,
-                //                    projectEndDate = p.EndDate
-                //                }
-                //                 );
-
+                //This solution produces the correct result, but with a lot of queries
                 var employees = dbContext.Employees
                     .Where
                     (
@@ -59,9 +41,11 @@
                                     ep.Project.StartDate,
                                     ep.Project.EndDate
                                 }
-                                )
+                                ).ToList()
                         })
-                    .Take(30);
+                    .Take(30)
+                    .ToList();
+
 
                 foreach (var e in employees.ToArray())
                 {
@@ -69,15 +53,59 @@
 
                     foreach (var p in e.projects)
                     {
-                        const string dateTimeFormat = "M/d/yyyy h:mm:ss tt";
-                        const string nullMessage = "not finished";
-                        Console.WriteLine($"--{p.Name} - {p.StartDate.ToString(dateTimeFormat, CultureInfo.InvariantCulture)} - " +
-                            (p.EndDate != null ? (p.EndDate.Value.ToString(dateTimeFormat, CultureInfo.InvariantCulture)) : nullMessage));
+                        const string DateTimeFormat = "M/d/yyyy h:mm:ss tt";
+                        const string NullMessage = "not finished";
+                        Console.WriteLine($"--{p.Name} - {p.StartDate.ToString(DateTimeFormat, CultureInfo.InvariantCulture)} - " +
+                            (p.EndDate != null ? (p.EndDate.Value.ToString(DateTimeFormat, CultureInfo.InvariantCulture)) : NullMessage));
                     }
                 }
+            }
+        }
 
-                Console.WriteLine();
+        /// <summary>
+        /// the same, using joins and only one query
+        /// </summary>
+        public static void PrintEmployeesAndProjects_usingJoins()
+        {
+            var dbContext = new SoftUniContext();
 
+            using (dbContext)
+            {
+                var employees_2 =
+                    (
+                     from e in dbContext.Employees
+                     .Where(e => e.EmployeesProjects.Any
+                     (
+                         ep => ep.Project.StartDate.Year >= 2001 && ep.Project.StartDate.Year <= 2003)
+                      ).Take(30)
+                     join epr in dbContext.EmployeesProjects on e.EmployeeId equals epr.EmployeeId
+                     join p in dbContext.Projects on epr.ProjectId equals p.ProjectId
+                     join m in dbContext.Employees on e.ManagerId equals m.EmployeeId
+                     select new
+                     {
+                         p,
+                         e,
+                         managerName = $"{m.FirstName} {m.LastName}"
+                     })
+                     .ToList();
+
+                    HashSet<string> alreadyPrintedEmployees = new HashSet<string>();
+                    foreach (var employeeProject in employees_2)
+                    {
+                        string currentEmployeeName = $"{employeeProject.e.FirstName} {employeeProject.e.LastName}";
+                        string managerName = $"{employeeProject.managerName}";
+
+                        if (!alreadyPrintedEmployees.Contains(currentEmployeeName))
+                        {
+                            Console.WriteLine($"{currentEmployeeName} - Manager: {managerName}");
+                            alreadyPrintedEmployees.Add(currentEmployeeName);
+                        }
+
+                        const string DateTimeFormat = "M/d/yyyy h:mm:ss tt";
+                        const string NullMessage = "not finished";
+                        Console.WriteLine($"--{employeeProject.p.Name} - {employeeProject.p.StartDate.ToString(DateTimeFormat, CultureInfo.InvariantCulture)} - "
+                            + (employeeProject.p.EndDate != null ? (employeeProject.p.EndDate.Value.ToString(DateTimeFormat, CultureInfo.InvariantCulture)) : NullMessage));
+                }
             }
         }
     }

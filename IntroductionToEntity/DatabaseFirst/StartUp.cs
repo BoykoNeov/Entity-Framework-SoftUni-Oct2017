@@ -17,7 +17,10 @@
             // P06_AddingNewAddressAndUpdatingClass.AddingNewAddressAndUpdatingClass();
 
             // Task 7
-            P07_EmployeesAndProjects.PrintEmployeesAndProjects();
+            // P07_EmployeesAndProjects.PrintEmployeesAndProjects();
+            // P07_EmployeesAndProjects.PrintEmployeesAndProjects_usingJoins();
+
+            // Task 8
         }
     }
 }
