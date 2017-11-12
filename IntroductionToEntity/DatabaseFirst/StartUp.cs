@@ -36,7 +36,10 @@
             // P12_IncreaseSalaries.IncreaseSalaries();
 
             // Task 13
+            // P13_FirstNameStartingWithSa.GetEmployeesWithFirstNameStartingWithSa();
 
+            // Task 14
+            // P14_DeleteProjectById.DeleteProjectById();
         }
     }
 }
