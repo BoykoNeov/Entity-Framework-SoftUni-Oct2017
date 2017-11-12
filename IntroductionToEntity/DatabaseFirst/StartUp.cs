@@ -21,6 +21,22 @@
             // P07_EmployeesAndProjects.PrintEmployeesAndProjects_usingJoins();
 
             // Task 8
+            // P08_AddressesByTown.GetAddressesByTown();
+
+            // Task 9
+            // P09_Employee147.GetEmployee147();
+
+            // Task 10
+            // P10_DepartmentsWithMoreThan5Employees.GetDepartmentsWithMoreThan5Employees();
+
+            // Task 11
+            // P11_Latest10Projects.GetLatest10Projects();
+
+            // Task 12
+            // P12_IncreaseSalaries.IncreaseSalaries();
+
+            // Task 13
+
         }
     }
 }
