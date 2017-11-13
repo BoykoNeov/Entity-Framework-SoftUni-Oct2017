@@ -16,3 +16,16 @@ Enter "TCP Port" 1433.
 Now Restart "SQL Server .Name." using "services.msc" (winKey + r)
 
 ------------------------------------------------------------------------------------------
+
+To enable migrations to create the initial database I've found the following works well.
+
+************************************************
+
+Delete your database from within SQL Server Object Explorer
+Delete all your existing migrations from within the Migrations folder.
+In Package-Management-Console type "Add-Migration InitialCreate"
+
+[optional, depending on your database initializer]
+In Package-Management-Console type "update-database"
+
+------------------------------------------------------------------------------------------
