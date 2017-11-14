@@ -29,3 +29,13 @@ In Package-Management-Console type "Add-Migration InitialCreate"
 In Package-Management-Console type "update-database"
 
 ------------------------------------------------------------------------------------------
+
+Microsoft.EntityFrameworkCore.Tools  - should be added to the StartUp when creating a code first database
+
+Microsoft.EntityFrameworkCore.SqlServer
+Microsoft.EntityFrameworkCore.Design              - those should be added to the database library when creating code first
+
+those nuget packages may have to be removed in order for the tests in Judge to pass
+
+------------------------------------------------------------------------------------------
+
