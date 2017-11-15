@@ -31,15 +31,12 @@
 
                 s.Property(p => p.Name)
                 .IsUnicode(true)
-                .HasMaxLength(100)
-                .IsRequired(true);
+                .HasMaxLength(100);
 
                 s.Property(p => p.PhoneNumber)
                 .IsRequired(false)
+                .HasColumnName("CHAR(10)")
                 .IsUnicode(false);
-
-                s.Property(p => p.RegisteredOn)
-                .IsRequired(true);
 
                 s.Property(p => p.Birthday)
                 .IsRequired(false);
@@ -103,9 +100,7 @@
                 .IsRequired(true);
 
                 hs.Property(p => p.SubmissionTime)
-                .IsRequired()
-                .HasColumnName("DATETIME2")
-                .HasDefaultValueSql("GETDATE()");
+                .HasColumnName("DATETIME2");
 
                 hs.HasOne(e => e.Course)
                 .WithMany(h => h.HomeworkSubmissions)
@@ -130,7 +125,7 @@
                 .HasForeignKey(e => e.StudentId);
 
                 sc.HasOne(e => e.Course)
-                .WithMany(s => s.StudentCourses)
+                .WithMany(s => s.StudentsEnrolled)
                 .HasForeignKey(e => e.CourseId);
             });
         }

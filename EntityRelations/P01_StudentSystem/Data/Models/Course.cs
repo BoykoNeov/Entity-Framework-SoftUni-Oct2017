@@ -7,7 +7,7 @@ namespace P01_StudentSystem.Data.Models
     {
        public Course()
         {
-            this.StudentCourses = new List<StudentCourse>();
+            this.StudentsEnrolled = new List<StudentCourse>();
             this.HomeworkSubmissions = new List<Homework>();
             this.Resources = new List<Resource>();
         }
@@ -21,6 +21,6 @@ namespace P01_StudentSystem.Data.Models
 
         public ICollection<Resource> Resources { get; set; }
         public ICollection<Homework> HomeworkSubmissions { get; set; }
-        public ICollection <StudentCourse> StudentCourses { get; set; }
+        public ICollection <StudentCourse> StudentsEnrolled { get; set; }
     }
 }
