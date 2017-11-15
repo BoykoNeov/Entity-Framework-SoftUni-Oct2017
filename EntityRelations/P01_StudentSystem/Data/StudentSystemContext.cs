@@ -1,20 +1,18 @@
 ﻿namespace P01_StudentSystem.Data
 {
-    using System;
     using Microsoft.EntityFrameworkCore;
     using P01_StudentSystem.Data.Models;
-    using Microsoft.EntityFrameworkCore.Design;
 
     public class StudentSystemContext : DbContext
     {
         public StudentSystemContext() { }
 
-        public StudentSystemContext(DbContextOptions options) : base() { }
+        public StudentSystemContext(DbContextOptions options) : base(options) { }
 
         public DbSet<Student> Students { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Resource> Resources { get; set; }
-        public DbSet<HomeworkSubmission> HomeworkSubmissions { get; set; }
+        public DbSet<Homework> HomeworkSubmissions { get; set; }
         public DbSet<StudentCourse> StudentCourses { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -93,7 +91,7 @@
                 .HasForeignKey(e => e.CourseId);
             });
 
-            modelBuilder.Entity<HomeworkSubmission>(hs =>
+            modelBuilder.Entity<Homework>(hs =>
             {
                 hs.HasKey(p => p.HomeworkId);
 
@@ -128,7 +126,7 @@
                 });
 
                 sc.HasOne(e => e.Student)
-                .WithMany(s => s.StudentCourses)
+                .WithMany(s => s.CourseEnrollments)
                 .HasForeignKey(e => e.StudentId);
 
                 sc.HasOne(e => e.Course)

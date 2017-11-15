@@ -8,7 +8,7 @@ namespace P01_StudentSystem.Data.Models
        public Course()
         {
             this.StudentCourses = new List<StudentCourse>();
-            this.HomeworkSubmissions = new List<HomeworkSubmission>();
+            this.HomeworkSubmissions = new List<Homework>();
             this.Resources = new List<Resource>();
         }
 
@@ -20,7 +20,7 @@ namespace P01_StudentSystem.Data.Models
         public decimal Price { get; set; }
 
         public ICollection<Resource> Resources { get; set; }
-        public ICollection<HomeworkSubmission> HomeworkSubmissions { get; set; }
+        public ICollection<Homework> HomeworkSubmissions { get; set; }
         public ICollection <StudentCourse> StudentCourses { get; set; }
     }
 }

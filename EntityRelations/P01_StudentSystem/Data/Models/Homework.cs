@@ -9,9 +9,9 @@
         Zip
     }
 
-    public class HomeworkSubmission
+    public class Homework
     {
-       public HomeworkSubmission()
+       public Homework()
         {
 
         }
