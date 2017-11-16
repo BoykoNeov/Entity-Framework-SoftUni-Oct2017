@@ -42,7 +42,8 @@ those nuget packages may have to be removed in order for the tests in Judge to p
 14-Nov-2017 , от Владимир Дамяновски:
 Колеги, честит ви EF Core 2.0.1! Ако ще събмитвате в judge, ползвайте 2.0.0, иначе че ви изгърми с compile time error в който се споменава връзка към NuGet.
 Install-Package Microsoft.EntityFrameworkCore -v 2.0.0
-Същото важи и за Microsoft.EntityFrameworkCore.SqlServer
+Същото важи и за 
+Install-Package Microsoft.EntityFrameworkCore.SqlServer -v 2.0.0
 
 ------------------------------------------------------------------------------------------
 
