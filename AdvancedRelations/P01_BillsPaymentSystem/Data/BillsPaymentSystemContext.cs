@@ -8,6 +8,9 @@ namespace P01_BillsPaymentSystem
     public class BillsPaymentSystemContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<CreditCard> CreditCards { get; set; }
+        public DbSet<BankAccount> BankAccounts { get; set; }
+        public DbSet<PaymentMethod> PaymentMethods { get; set; }
 
         public BillsPaymentSystemContext()
         {
@@ -31,6 +34,9 @@ namespace P01_BillsPaymentSystem
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new CreditCardConfiguration());
+            modelBuilder.ApplyConfiguration(new BankAccountConfiguration());
+            modelBuilder.ApplyConfiguration(new PaymentMethodConfiguration());
         }
     }
 }

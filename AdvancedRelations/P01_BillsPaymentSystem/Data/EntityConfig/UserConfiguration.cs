@@ -1,10 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using P01_BillsPaymentSystem.Data.Models;
-
-namespace P01_BillsPaymentSystem.Data.EntityConfig
+﻿namespace P01_BillsPaymentSystem.Data.EntityConfig
 {
-    class UserConfiguration : IEntityTypeConfiguration<User>
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
+    using P01_BillsPaymentSystem.Data.Models;
+
+    internal class UserConfiguration : IEntityTypeConfiguration<User>
     {
         //o UserId
         //o FirstName(up to 50 characters, unicode)

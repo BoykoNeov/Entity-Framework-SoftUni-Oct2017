@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace P01_BillsPaymentSystem.Data.Models
+﻿namespace P01_BillsPaymentSystem.Data.Models
 {
-   public class User
+    public class User
     {
         public int UserId { get; set; }
         public string FirstName { get; set; }
