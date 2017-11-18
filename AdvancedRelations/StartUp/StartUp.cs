@@ -1,6 +1,7 @@
 ﻿namespace StartUp
 {
     using P01_BillsPaymentSystem;
+    using Microsoft.EntityFrameworkCore;
     public class StartUp
     {
         public static void Main()
@@ -9,7 +10,8 @@
 
             using (db)
             {
-                db.Database.EnsureCreated();
+                db.Database.EnsureDeleted();
+                db.Database.Migrate();
             }
         }
     }

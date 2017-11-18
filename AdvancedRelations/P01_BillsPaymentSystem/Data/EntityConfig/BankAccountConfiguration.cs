@@ -12,6 +12,8 @@
         //o SWIFT Code(up to 20 characters, non-unicode)
         public void Configure(EntityTypeBuilder<BankAccount> builder)
         {
+            builder.ToTable("BankAccounts");
+
             builder.HasKey(b => b.BankAccountId);
 
             // check if this is correct

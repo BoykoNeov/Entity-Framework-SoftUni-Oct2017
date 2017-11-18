@@ -3,6 +3,8 @@
     using P01_BillsPaymentSystem.Data.Models.Enums;
     public class PaymentMethod
     {
+        public int Id { get; set; }
+
         public AccountType Type { get; set; }
 
         public int UserId { get; set; }
