@@ -19,5 +19,28 @@
 
         public int PaymentMethodId { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
+
+        /// <summary>
+        /// Withdraws money from the credit card
+        /// </summary>
+        /// <param name="amount">Amount of money to be withdrawn</param>
+        /// <returns>returns if the operation is successfull</returns>
+        public bool Withdraw(decimal amount)
+        {
+            if (this.LimitLeft >= amount)
+            {
+                this.MoneyOwed += amount;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void Deposit(decimal amount)
+        {
+
+        }
     }
 }

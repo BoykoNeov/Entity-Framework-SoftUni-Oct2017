@@ -13,5 +13,28 @@
         // If it wont exist in the DB, then ok, it can be not nullable
         public int PaymentMethodId { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
+
+        /// <summary>
+        /// Withdraws money from the bank account
+        /// </summary>
+        /// <param name="amount">Amount of money to be withdrawn</param>
+        /// <returns>returns if the operation was successfull</returns>
+        public bool Withdraw(decimal amount)
+        {
+            if (this.Balance >= amount)
+            {
+                this.Balance -= amount;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void Deposit(decimal amount)
+        {
+            this.Balance += amount;
+        }
     }
 }

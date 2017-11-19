@@ -10,6 +10,7 @@
     {
         internal static void Get()
         {
+            Console.WriteLine("Please enter userId to display information about!");
             int userId = int.Parse(Console.ReadLine());
 
             var db = new BillsPaymentSystemContext();
