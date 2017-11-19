@@ -19,10 +19,12 @@
             builder.HasKey(b => b.CreditCardId);
 
             // check if this is correct
-            builder.HasOne(b => b.PaymentMethod)
-                .WithOne(b => b.CreditCard)
-                .HasForeignKey<PaymentMethod>(pm => pm.BankAccountId)
-                .IsRequired(false);
+            //builder.HasOne(b => b.PaymentMethod)
+            //    .WithOne(b => b.CreditCard)
+            //    .HasForeignKey<PaymentMethod>(pm => pm.BankAccountId)
+            //    .IsRequired(false);
+
+            builder.Ignore(b => b.PaymentMethodId);
 
             builder.Property(b => b.ExpirationDate)
                 .IsRequired(true)

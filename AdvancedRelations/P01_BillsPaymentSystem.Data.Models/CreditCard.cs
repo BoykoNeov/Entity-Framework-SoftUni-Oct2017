@@ -5,40 +5,13 @@
     public class CreditCard
     {
         public int CreditCardId { get; set; }
-        public decimal Limit
-        {
-            get
-            {
-                return this.Limit;
-            }
-            set
-            {
-                if (value >= 0)
-                {
-                    this.Limit = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Limit cannot be negative");
-                }
-            }
-        }
-        public decimal MoneyOwed
-        {
-            get
-            {
-                return this.MoneyOwed;
-            }
-            set
-            {
-                this.MoneyOwed = value;
-            }
-        }
+        public decimal Limit { get; set; }
+        public decimal MoneyOwed { get; set; }
         public decimal LimitLeft
         {
             get
             {
-                return (this.Limit - this.LimitLeft);
+                return (this.Limit - this.MoneyOwed);
             }
         }
 

@@ -17,10 +17,12 @@
             builder.HasKey(b => b.BankAccountId);
 
             // check if this is correct
-            builder.HasOne(e => e.PaymentMethod)
-                .WithOne(e => e.BankAccount)
-                .HasForeignKey<PaymentMethod>(pm => pm.BankAccountId)
-                .IsRequired(false);
+            //builder.HasOne(e => e.PaymentMethod)
+            //    .WithOne(e => e.BankAccount)
+            //    .HasForeignKey<PaymentMethod>(pm => pm.BankAccountId)
+            //    .IsRequired(false);
+
+            builder.Ignore(b => b.PaymentMethodId);
 
             builder.Property(b => b.BankName)
                 .IsRequired(true)
@@ -29,11 +31,13 @@
 
             builder.Property(b => b.SWIFTCode)
                 .IsRequired(true)
-                .HasMaxLength(50)
+                .HasMaxLength(20)
                 .IsUnicode(false);
 
             builder.Property(b => b.Balance)
                 .IsRequired(true);
+
+
         }
     }
 }

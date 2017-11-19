@@ -19,6 +19,7 @@
 
             // what about null values?
             // builder.HasKey(pm => new {pm.UserId, pm.CreditCardId, pm.BankAccountId  });
+
             builder.HasIndex(i => new {i.UserId, i.CreditCardId, i.BankAccountId })
                 .IsUnique(true);
 
