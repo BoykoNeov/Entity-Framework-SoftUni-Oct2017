@@ -52,7 +52,7 @@ How to add Constraints within the table?
 **********************************************
 through migrations add this to migration file (example):
 "    migrationBuilder.Sql("ALTER TABLE PaymentMethods " +
-                "ADD CONSTRAINT CH_CreditCard_BankAccount " +
+                "ADD CONSTRAINT CK_CreditCard_BankAccount " +
                 "CHECK(" + 
                 "(CreditCardId IS NULL AND BankAccountId IS NOT NULL) OR " +
                 "(CreditCardId IS NOT NULL AND BankAccountId IS NULL))");"
