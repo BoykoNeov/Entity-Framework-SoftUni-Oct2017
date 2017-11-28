@@ -19,7 +19,7 @@
         {
             using (var db = new PhotoShareContext())
             {
-                db.Database.EnsureDeleted();
+             // db.Database.EnsureDeleted();
                 db.Database.EnsureCreated();
             }
         }

@@ -1,28 +1,44 @@
 ﻿namespace PhotoShare.Client.Core.Commands
 {
+    using System;
+    using System.Linq;
+
     using Models;
     using Data;
+    using Microsoft.EntityFrameworkCore;
 
     public class AddTownCommand
     {
         // AddTown <townName> <countryName>
-        public string Execute(string[] data)
+        public static string Execute(string[] data)
         {
-            string townName = data[1];
-            string country = data[0];
+            string townName = data[0];
+            string country = data[1];
 
             using (PhotoShareContext context = new PhotoShareContext())
             {
-                Town town = new Town
+                Town existingTown = context.Towns
+                    .AsNoTracking()
+                    .Where(t => t.Name == townName)
+                    .FirstOrDefault();
+
+                if (existingTown != null)
                 {
-                    Name = townName,
-                    Country = country
-                };
+                    throw new ArgumentException($"Town {townName} was already added!");
+                }
+                else
+                {
+                    Town town = new Town
+                    {
+                        Name = townName,
+                        Country = country
+                    };
 
-                context.Towns.Add(town);
-                context.SaveChanges();
+                    context.Towns.Add(town);
+                    context.SaveChanges();
+                }
 
-                return townName + " was added to database!";
+                return townName + " was added successfully!";
             }
         }
     }
