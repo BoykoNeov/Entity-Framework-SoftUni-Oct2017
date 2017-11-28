@@ -24,9 +24,12 @@
                     result = AddTownCommand.Execute(commandParameters);
                     break;
 
+                case "modifyuser":
+                    result = ModifyUserCommand.Execute(commandParameters);
+                    break;
+
                 default:
                     throw new InvalidOperationException($"Command {command} is not valid!");
-                    break;
             }
 
             return result;
