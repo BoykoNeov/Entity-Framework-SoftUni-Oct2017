@@ -43,6 +43,7 @@
 
                                 foreach (char letter in newUserPropertyValue)
                                 {
+                                    // if the input is unicode, there is a point in checking for both
                                     if (char.IsDigit(letter) && char.IsNumber(letter))
                                     {
                                         containsDigit = true;
@@ -67,37 +68,15 @@
 
                             case "borntown":
                                 {
-                                    Town newBornTown = context.Towns
-                                      .Where(t => t.Name == newUserPropertyValue)
-                                      .FirstOrDefault();
-
-                                    if (newBornTown == null)
-                                    {
-                                        throw new ArgumentException($"Town {newUserPropertyValue} not found!", "Town");
-                                    }
-                                    else
-                                    {
-                                        currentUser.BornTown = newBornTown;
-                                        result = $"User {userName} {userProperty} is {newUserPropertyValue}.";
-                                    }
+                                        currentUser.BornTown = CheckTownExistsInDB(context, newUserPropertyValue);
+                                        result = $"User {userName} {userProperty} is {newUserPropertyValue}.";       
                                 }
                                 break;
 
                             case "currenttown":
                                 {
-                                    Town newCurrentTown = context.Towns
-                                        .Where(t => t.Name == newUserPropertyValue)
-                                        .FirstOrDefault();
-
-                                    if (newCurrentTown == null)
-                                    {
-                                        throw new ArgumentException($"Town {newUserPropertyValue} not found!", "Town");
-                                    }
-                                    else
-                                    {
-                                        currentUser.CurrentTown = newCurrentTown;
+                                        currentUser.CurrentTown = CheckTownExistsInDB(context, newUserPropertyValue);
                                         result = $"User {userName} {userProperty} is {newUserPropertyValue}.";
-                                    }
                                 }
                                 break;
 
@@ -116,6 +95,26 @@
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// Checks if the town exists in the DB and returns it if it does, otherwise throws an argument exception
+        /// </summary>
+        /// <param name="photoShareContext">PhotoShareDbContext</param>
+        /// <param name="townName">Name of town to retrieve from DB</param>
+        /// <returns>Town from DB</returns>
+        private static Town CheckTownExistsInDB(PhotoShareContext photoShareContext, string townName)
+        {
+            Town newCurrentTown = photoShareContext.Towns
+                .Where(t => t.Name == townName)
+                .FirstOrDefault();
+
+            if (newCurrentTown == null)
+            {
+                throw new ArgumentException($"Town {townName} not found!", "Town");
+            }
+
+            return newCurrentTown;
         }
     }
 }

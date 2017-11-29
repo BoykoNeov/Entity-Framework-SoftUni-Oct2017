@@ -1,24 +1,37 @@
 ﻿namespace PhotoShare.Client.Core.Commands
 {
-    using Models;
     using Data;
+    using Models;
+    using System;
+    using System.Linq;
     using Utilities;
 
     public class AddTagCommand
     {
         // AddTag <tag>
-        public string Execute(string[] data)
+        public static string Execute(string[] data)
         {
-            string tag = data[1].ValidateOrTransform();
+            string tag = data[0].ValidateOrTransform();
 
             using (PhotoShareContext context = new PhotoShareContext())
             {
-                context.Tags.Add(new Tag
-                {
-                    Name = tag
-                });
+                Tag currentTag = context.Tags
+                    .Where(t => t.Name == tag)
+                    .FirstOrDefault();
 
-                context.SaveChanges();
+                if (currentTag != null)
+                {
+                    throw new ArgumentException($"Tag {currentTag.Name} exists!");
+                }
+                else
+                {
+                    context.Tags.Add(new Tag
+                    {
+                        Name = tag
+                    });
+
+                    context.SaveChanges();
+                }
             }
 
             return tag + " was added successfully to database!";

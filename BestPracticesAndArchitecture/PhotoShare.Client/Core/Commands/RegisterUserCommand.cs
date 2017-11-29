@@ -28,11 +28,6 @@
                 currentTownName = data[5];
             }
 
-            if (password != repeatPassword)
-            {
-                throw new ArgumentException("Passwords do not match!");
-            }
-
             using (PhotoShareContext context = new PhotoShareContext())
             {
                 Town currentTown = context.Towns
@@ -66,6 +61,11 @@
                 }
                 else
                 {
+                    if (password != repeatPassword)
+                    {
+                        throw new ArgumentException("Passwords do not match!");
+                    }
+
                     context.Users.Add(user);
                     context.SaveChanges();
                 }

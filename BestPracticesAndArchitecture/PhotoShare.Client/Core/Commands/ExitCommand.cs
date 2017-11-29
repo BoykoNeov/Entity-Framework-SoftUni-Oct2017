@@ -4,7 +4,7 @@
 
     public class ExitCommand
     {
-        public string Execute()
+        public static string Execute()
         {
             Environment.Exit(0);
             return "Bye-bye!";
