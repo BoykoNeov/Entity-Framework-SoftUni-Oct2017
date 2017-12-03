@@ -18,8 +18,10 @@ namespace Employees.App
             while (true)
             {
                 string input = Console.ReadLine();
-                string[] commandTokens = input.Split(' ');
+                string[] commandTokens = input.Trim().Split(' ');
+
                 string commandName = commandTokens[0];
+
                 string[] commandArgs = commandTokens.Skip(1).ToArray();
 
                 ICommand command = CommandParser.ParseCommand(serviceProvider, commandName);

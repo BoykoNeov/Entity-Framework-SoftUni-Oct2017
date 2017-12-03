@@ -11,8 +11,8 @@ using System;
 namespace Employees.Data.Migrations
 {
     [DbContext(typeof(EmployeesContext))]
-    [Migration("20171202111432_Initial")]
-    partial class Initial
+    [Migration("20171203172705_AddManagers")]
+    partial class AddManagers
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,11 +39,22 @@ namespace Employees.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(60);
 
+                    b.Property<int?>("ManagerId");
+
                     b.Property<decimal>("Salary");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ManagerId");
+
                     b.ToTable("Employees");
+                });
+
+            modelBuilder.Entity("Employees.Models.Employee", b =>
+                {
+                    b.HasOne("Employees.Models.Employee", "Manager")
+                        .WithMany("Subordinates")
+                        .HasForeignKey("ManagerId");
                 });
 #pragma warning restore 612, 618
         }

@@ -10,6 +10,10 @@
         {
             CreateMap<Employee, EmployeeDto>();
             CreateMap<EmployeeDto, Employee>();
+            CreateMap<Employee, EmployeePersonalInfoDTO>();
+            CreateMap<EmployeePersonalInfoDTO, Employee>();
+            CreateMap<Employee, ManagerDto>();
+
         }
     }
 }

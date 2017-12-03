@@ -1,6 +1,7 @@
 ﻿namespace Employees.App
 {
     using AutoMapper;
+    using AutoMapper.QueryableExtensions;
     using Employees.Data;
     using Employees.Services;
     using Microsoft.EntityFrameworkCore;

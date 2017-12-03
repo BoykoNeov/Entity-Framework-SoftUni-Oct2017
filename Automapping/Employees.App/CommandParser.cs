@@ -20,7 +20,12 @@
 
             // Gets only the command that has a name similar to input
             Type commandType = commandTypes
-                .SingleOrDefault(c => c.Name == $"{commandName}Command");
+                .SingleOrDefault(c => c.Name.ToLower() == $"{commandName}Command".ToLower());
+
+            if (commandType == null)
+            {
+                throw new InvalidOperationException("Invalid command!");
+            }
 
             // Gets the first constructor (what if there are more?)
             ConstructorInfo constructor = commandType
@@ -30,12 +35,15 @@
             // Gets the parameters of the constructor
             IEnumerable<Type> construcotrParams = constructor
                 .GetParameters()
-                .Select(p => p.GetType());
+                .Select(p => p.ParameterType);
 
+            // Get constructor arguments
             object[] constructorArgs = construcotrParams
-                .Select(p => serviceProvider.GetService(p))
+            //  .Select(p => serviceProvider.GetService(p))
+                .Select(serviceProvider.GetService)
                 .ToArray();
 
+            //Ivoke requres object
             ICommand command = (ICommand)constructor.Invoke(constructorArgs);
 
             return command;

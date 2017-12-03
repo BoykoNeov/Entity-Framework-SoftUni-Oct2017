@@ -6,7 +6,7 @@
     {
         public string Execute(params string[] args)
         {
-            Console.WriteLine("Goodbuy!");
+            Console.WriteLine("Goodbye!");
             Environment.Exit(0);
 
             return String.Empty;
