@@ -14,5 +14,8 @@
         public string LastName { get; set; }
         public ICollection<EmployeeDto> Subordinates { get; set; }
         public int SubordinatesCount => this.Subordinates.Count;
+
+        // Test
+        // public ICollection<EmployeeDto> Test { get; set; }
     }
 }
