@@ -5,6 +5,11 @@
 
     public class Category
     {
+        public Category()
+        {
+            this.ThisCategoryProducts = new HashSet<CategoryProducts>();
+        }
+
         public int Id { get; set; }
 
         [MaxLength(15), MinLength(3)]

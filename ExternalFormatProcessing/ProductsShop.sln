@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductsShop.App", "ProductsShop.App\ProductsShop.App.csproj", "{F4F49544-D161-436A-8A9C-7FF7D58DE1B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductsShop.App", "ProductsShop.App\ProductsShop.App.csproj", "{F4F49544-D161-436A-8A9C-7FF7D58DE1B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductsShop.Data", "ProductsShop.Data\ProductsShop.Data.csproj", "{73CF0304-ADC7-4EA4-B6B0-368E3C29F9DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductsShop.Data", "ProductsShop.Data\ProductsShop.Data.csproj", "{73CF0304-ADC7-4EA4-B6B0-368E3C29F9DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductsShop.Models", "ProductsShop.Models\ProductsShop.Models.csproj", "{9F369203-4A13-475A-9363-DB0FC01B899E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductsShop.Models", "ProductsShop.Models\ProductsShop.Models.csproj", "{9F369203-4A13-475A-9363-DB0FC01B899E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
