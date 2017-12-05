@@ -57,3 +57,11 @@ through migrations add this to migration file (example):
                 "(CreditCardId IS NULL AND BankAccountId IS NOT NULL) OR " +
                 "(CreditCardId IS NOT NULL AND BankAccountId IS NULL))");"
 
+
+-------------------------------------------------------------------------------------------
+Composite Primary Key:
+**********************************************
+
+build.HasKey(t => new {t.ActiveQuestionId, t.QuestionId}); 
+
+-------------------------------------------------------------------------------------------

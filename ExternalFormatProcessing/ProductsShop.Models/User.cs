@@ -7,9 +7,9 @@
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int Age { get; set; }
+        public int? Age { get; set; }
 
-        ICollection<Product> ProductsBought;
-        ICollection<Product> ProductsSold;
+        public ICollection<Product> ProductsBought { get; set; }
+        public ICollection<Product> ProductsSold { get; set; }
     }
 }

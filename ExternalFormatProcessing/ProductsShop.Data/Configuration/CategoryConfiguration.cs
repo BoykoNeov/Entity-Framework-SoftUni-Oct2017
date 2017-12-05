@@ -8,7 +8,11 @@
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
-            throw new System.NotImplementedException();
+            builder.HasKey(e => e.Id);
+
+            builder.Property(e => e.Name)
+                .IsRequired(true)
+                .HasMaxLength(15);
         }
     }
 }
