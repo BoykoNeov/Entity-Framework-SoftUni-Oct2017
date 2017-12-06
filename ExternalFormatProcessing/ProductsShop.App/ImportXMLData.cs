@@ -7,7 +7,7 @@
     using ProductsShop.Models;
     using ProductsShop.Data;
 
-    internal static class Task3_1_ImportXMLData
+    internal static class ImportXMLData
     {
         internal static void ImportXMLDataAndPopulateDB()
         {

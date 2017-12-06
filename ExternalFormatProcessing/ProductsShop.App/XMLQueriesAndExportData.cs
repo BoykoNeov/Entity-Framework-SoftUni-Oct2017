@@ -6,7 +6,7 @@
     using System.Linq;
     using System.Xml.Linq;
 
-    internal class Task3_2_QueriesAndXMLExport
+    internal class XMLQueriesAndExportData
     {
         internal static string GetProductsInRange(ProductsShopContext context)
         {
@@ -88,9 +88,6 @@
 
         internal static string GetCategoriesByProductsCount(ProductsShopContext context)
         {
-            XDocument xCategories = new XDocument();
-            xCategories.Add(new XElement("categories"));
-
             var categoreisByProductsCount = context.Categories
                 .Include(p => p.ThisCategoryProducts)
                 .ThenInclude(cp => cp.Product)
@@ -103,6 +100,9 @@
                     totalRevenue = cp.ThisCategoryProducts.Count == 0 ? 0 : cp.ThisCategoryProducts.Select(t => t.Product.Price).Sum(),
                 });
 
+            XDocument xCategories = new XDocument();
+            xCategories.Add(new XElement("categories"));
+
             foreach (var c in categoreisByProductsCount)
             {
                 xCategories.Root.Add(new XElement("category", new XAttribute("name", c.category),
@@ -112,7 +112,73 @@
             }
 
             string result = XMLSerializer.SerializeXML(xCategories, true);
-            System.Console.WriteLine(result);
+            // System.Console.WriteLine(result);
+            return result;
+        }
+
+        internal static string GetUsersAndProducts(ProductsShopContext context)
+        {
+            var usersBySoldProducts = context.Users
+                    .Include(u => u.ProductsSold)
+                    .Where(u => u.ProductsSold.Any(p => p.BuyerId != null))
+                    .OrderByDescending(u => u.ProductsSold.Where(p => p.BuyerId != 0).Count())
+                    .ThenBy(u => u.LastName)
+                    .Select(u => new
+                    {
+                        firstName = u.FirstName,
+                        lastName = u.LastName,
+                        age = u.Age,
+                        soldProducts = (new
+                        {
+                            count = u.ProductsSold.Where(pr => pr.BuyerId != 0).Count(),
+                            products = u.ProductsSold.Select(pr => new
+                            {
+                                name = pr.Name,
+                                price = pr.Price
+                            })
+                        })
+                    });
+
+            var usersToSerialize = new
+            {
+                usersCount = usersBySoldProducts.Count(),
+                users = usersBySoldProducts
+            };
+
+            XDocument xUsersAndProducts = new XDocument();
+
+            xUsersAndProducts.Add(new XElement("users", new XAttribute("count", usersBySoldProducts.Count())));
+
+            foreach (var item in usersBySoldProducts)
+            {
+                XElement user = new XElement("user");
+
+                if (item.firstName != null)
+                {
+                    user.Add(new XAttribute("first-name", item.firstName));
+                }
+
+                user.Add(new XAttribute("last-name", item.lastName));
+
+                if (item.age!= null)
+                {
+                    user.Add(new XAttribute("age", item.age));
+                }
+
+                XElement soldProducts = new XElement("sold-products", new XAttribute("count", item.soldProducts.count));
+
+                foreach (var soldProduct in item.soldProducts.products)
+                {
+                    XElement product = new XElement("product", new XAttribute("name",soldProduct.name),new XAttribute("price",soldProduct.price));
+                    soldProducts.Add(product);
+                }
+
+                user.Add(soldProducts);
+                xUsersAndProducts.Root.Add(user);
+            }
+
+            string result = XMLSerializer.SerializeXML(xUsersAndProducts, true);
+         // System.Console.WriteLine(result);
             return result;
         }
     }

@@ -1,6 +1,7 @@
 ﻿namespace ProductsShop.App
 {
     using System.IO;
+    using System.Text;
     using System.Xml;
     using System.Xml.Linq;
 
@@ -10,7 +11,7 @@
         {
             string result = string.Empty;
 
-            using (var stringWriter = new StringWriter())
+            using (var stringWriter = new Utf8StringWriter())
             {
                 XmlWriter xmlTextWriter;
 
@@ -41,5 +42,10 @@
 
             return result;
         }
+    }
+
+    public sealed class Utf8StringWriter : StringWriter
+    {
+        public override Encoding Encoding => Encoding.UTF8;
     }
 }

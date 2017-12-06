@@ -9,7 +9,7 @@
 /// <summary>
 /// Definitely not written to the standarts of quality programming code, but time is insufficient...
 /// </summary>
-    public static class Task1_ImportJSONData
+    public static class ImportJSONData
     {
         public static void ReadJsonFilesAndFillDb()
         {

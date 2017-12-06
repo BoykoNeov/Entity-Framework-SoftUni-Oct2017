@@ -1,0 +1,798 @@
+[
+  {
+    "name": "TRAMADOL HYDROCHLORIDE",
+    "price": 516.48,
+    "seller": {
+      "Id": 21,
+      "FirstName": "Chris",
+      "LastName": "Mitchell",
+      "Age": 59,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Allopurinol",
+    "price": 518.50,
+    "seller": {
+      "Id": 6,
+      "FirstName": "Joshua",
+      "LastName": "Murray",
+      "Age": 41,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Parsley",
+    "price": 519.06,
+    "seller": {
+      "Id": 40,
+      "FirstName": "Brenda",
+      "LastName": "Howell",
+      "Age": 75,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "equaline",
+    "price": 520.45,
+    "seller": {
+      "Id": 25,
+      "FirstName": "Marie",
+      "LastName": "Williamson",
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Extra Strength Pain Reliever PM",
+    "price": 542.72,
+    "seller": {
+      "Id": 40,
+      "FirstName": "Brenda",
+      "LastName": "Howell",
+      "Age": 75,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Propranolol Hydrochloride",
+    "price": 546.95,
+    "seller": {
+      "Id": 34,
+      "FirstName": "Carl",
+      "LastName": "Daniels",
+      "Age": 59,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Prednisone",
+    "price": 550.72,
+    "seller": {
+      "Id": 54,
+      "LastName": "Baker",
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "TERSI",
+    "price": 554.91,
+    "seller": {
+      "Id": 23,
+      "FirstName": "Arthur",
+      "LastName": "Reynolds",
+      "Age": 32,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "DAYWEAR PLUS MULTI PROTECTION TINTED MOISTURIZER",
+    "price": 555.12,
+    "seller": {
+      "Id": 53,
+      "FirstName": "Nicole",
+      "LastName": "Martinez",
+      "Age": 28,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "PLANTAGO LANCEOLATA POLLEN",
+    "price": 561.68,
+    "seller": {
+      "Id": 13,
+      "FirstName": "Christina",
+      "LastName": "Patterson",
+      "Age": 63,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Echinacea Quartz Gum Support",
+    "price": 570.08,
+    "seller": {
+      "Id": 36,
+      "LastName": "Fox",
+      "Age": 68,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Topiramate",
+    "price": 578.77,
+    "seller": {
+      "Id": 8,
+      "FirstName": "Diana",
+      "LastName": "Harvey",
+      "Age": 46,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "AIR",
+    "price": 581.69,
+    "seller": {
+      "Id": 45,
+      "LastName": "Peterson",
+      "Age": 72,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Agaricus Equisetum Special Order",
+    "price": 585.93,
+    "seller": {
+      "Id": 19,
+      "FirstName": "Patricia",
+      "LastName": "Fuller",
+      "Age": 36,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Gemcitabine",
+    "price": 594.79,
+    "seller": {
+      "Id": 3,
+      "FirstName": "Jennifer",
+      "LastName": "Riley",
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Ketorolac Tromethamine",
+    "price": 608.18,
+    "seller": {
+      "Id": 46,
+      "FirstName": "Patrick",
+      "LastName": "King",
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Pleo Ginkgo",
+    "price": 613.65,
+    "seller": {
+      "Id": 21,
+      "FirstName": "Chris",
+      "LastName": "Mitchell",
+      "Age": 59,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Diastat",
+    "price": 614.14,
+    "seller": {
+      "Id": 19,
+      "FirstName": "Patricia",
+      "LastName": "Fuller",
+      "Age": 36,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "No7 Protect and Perfect Foundation Sunscreen Broad Spectrum SPF 15 Cool Ivory",
+    "price": 616.19,
+    "seller": {
+      "Id": 49,
+      "FirstName": "Gloria",
+      "LastName": "Alexander",
+      "Age": 61,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Glipizide",
+    "price": 621.78,
+    "seller": {
+      "Id": 43,
+      "LastName": "Moreno",
+      "Age": 37,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "AMARANTHUS PALMERI POLLEN",
+    "price": 623.16,
+    "seller": {
+      "Id": 45,
+      "LastName": "Peterson",
+      "Age": 72,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Foaming Hand Sanitizer",
+    "price": 624.72,
+    "seller": {
+      "Id": 13,
+      "FirstName": "Christina",
+      "LastName": "Patterson",
+      "Age": 63,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "ziprasidone hydrochloride",
+    "price": 628.66,
+    "seller": {
+      "Id": 1,
+      "FirstName": "Eugene",
+      "LastName": "Stewart",
+      "Age": 65,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "AVANDAMET",
+    "price": 632.08,
+    "seller": {
+      "Id": 39,
+      "LastName": "Bennett",
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Imipramine Hydrochloride",
+    "price": 648.69,
+    "seller": {
+      "Id": 24,
+      "FirstName": "Thomas",
+      "LastName": "Snyder",
+      "Age": 40,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Childrens Allegra Allergy",
+    "price": 650.97,
+    "seller": {
+      "Id": 36,
+      "LastName": "Fox",
+      "Age": 68,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Strattera",
+    "price": 658.54,
+    "seller": {
+      "Id": 47,
+      "FirstName": "Rachel",
+      "LastName": "Johnson",
+      "Age": 24,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Amitiza",
+    "price": 666.58,
+    "seller": {
+      "Id": 6,
+      "FirstName": "Joshua",
+      "LastName": "Murray",
+      "Age": 41,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "ENBREL",
+    "price": 673.97,
+    "seller": {
+      "Id": 54,
+      "LastName": "Baker",
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Ampicillin",
+    "price": 674.63,
+    "seller": {
+      "Id": 45,
+      "LastName": "Peterson",
+      "Age": 72,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "PRIMAXIN",
+    "price": 686.66,
+    "seller": {
+      "Id": 20,
+      "FirstName": "Bonnie",
+      "LastName": "Fox",
+      "Age": 18,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "CLARINS Ever Matte SPF 15 - 105 Nude",
+    "price": 696.06,
+    "seller": {
+      "Id": 44,
+      "LastName": "Stewart",
+      "Age": 39,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "CALMING DIAPER RASH",
+    "price": 700.92,
+    "seller": {
+      "Id": 36,
+      "LastName": "Fox",
+      "Age": 68,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Acnezzol Base",
+    "price": 710.60,
+    "seller": {
+      "Id": 38,
+      "LastName": "Mitchell",
+      "Age": 41,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Prostate",
+    "price": 716.05,
+    "seller": {
+      "Id": 39,
+      "LastName": "Bennett",
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Pleo Lat",
+    "price": 720.08,
+    "seller": {
+      "Id": 11,
+      "FirstName": "Billy",
+      "LastName": "Parker",
+      "Age": 68,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "GOONG SECRET CALMING BATH",
+    "price": 742.47,
+    "seller": {
+      "Id": 28,
+      "LastName": "Thompson",
+      "Age": 46,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Warfarin Sodium",
+    "price": 770.05,
+    "seller": {
+      "Id": 34,
+      "FirstName": "Carl",
+      "LastName": "Daniels",
+      "Age": 59,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Pollens - Weeds and Garden Plants, Nettle Urtica dioica",
+    "price": 782.77,
+    "seller": {
+      "Id": 10,
+      "FirstName": "Paula",
+      "LastName": "Hill",
+      "Age": 74,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Isosorbide Mononitrate",
+    "price": 789.91,
+    "seller": {
+      "Id": 41,
+      "LastName": "Schmidt",
+      "Age": 70,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Naproxen",
+    "price": 807.22,
+    "seller": {
+      "Id": 46,
+      "FirstName": "Patrick",
+      "LastName": "King",
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Meloxicam",
+    "price": 809.18,
+    "seller": {
+      "Id": 43,
+      "LastName": "Moreno",
+      "Age": 37,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Clarins Paris Skin Illusion - 114 cappuccino",
+    "price": 811.42,
+    "seller": {
+      "Id": 44,
+      "LastName": "Stewart",
+      "Age": 39,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Azithromycin",
+    "price": 813.87,
+    "seller": {
+      "Id": 5,
+      "FirstName": "Amanda",
+      "LastName": "Frazier",
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "LV-FX",
+    "price": 820.87,
+    "seller": {
+      "Id": 32,
+      "FirstName": "Betty",
+      "LastName": "Lawson",
+      "Age": 38,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "IOPE SUPER VITAL",
+    "price": 824.68,
+    "seller": {
+      "Id": 15,
+      "FirstName": "Kathy",
+      "LastName": "Gilbert",
+      "Age": 51,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Aquafresh",
+    "price": 849.93,
+    "seller": {
+      "Id": 24,
+      "FirstName": "Thomas",
+      "LastName": "Snyder",
+      "Age": 40,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "RESCRIPTOR",
+    "price": 850.52,
+    "seller": {
+      "Id": 26,
+      "FirstName": "Jonathan",
+      "LastName": "Rodriguez",
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Moore Medical Sinus Pain and Pressure Relief",
+    "price": 855.39,
+    "seller": {
+      "Id": 50,
+      "LastName": "Harrison",
+      "Age": 18,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Shopko Lip Treatment",
+    "price": 861.42,
+    "seller": {
+      "Id": 55,
+      "FirstName": "Wanda",
+      "LastName": "Harris",
+      "Age": 26,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Perrigo Benzoyl Peroxide",
+    "price": 873.24,
+    "seller": {
+      "Id": 14,
+      "FirstName": "Christine",
+      "LastName": "Gomez",
+      "Age": 28,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "ESIKA",
+    "price": 879.37,
+    "seller": {
+      "Id": 24,
+      "FirstName": "Thomas",
+      "LastName": "Snyder",
+      "Age": 40,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Levothyroxine Sodium",
+    "price": 885.86,
+    "seller": {
+      "Id": 5,
+      "FirstName": "Amanda",
+      "LastName": "Frazier",
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "EPZICOM",
+    "price": 895.65,
+    "seller": {
+      "Id": 21,
+      "FirstName": "Chris",
+      "LastName": "Mitchell",
+      "Age": 59,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Myristica Argentum Sinus Relief",
+    "price": 904.52,
+    "seller": {
+      "Id": 39,
+      "LastName": "Bennett",
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Aspirin",
+    "price": 925.45,
+    "seller": {
+      "Id": 18,
+      "FirstName": "Betty",
+      "LastName": "Ward",
+      "Age": 70,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Ranitidine",
+    "price": 926.64,
+    "seller": {
+      "Id": 19,
+      "FirstName": "Patricia",
+      "LastName": "Fuller",
+      "Age": 36,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Care One Hemorrhoidal",
+    "price": 932.18,
+    "seller": {
+      "Id": 10,
+      "FirstName": "Paula",
+      "LastName": "Hill",
+      "Age": 74,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Spironolactone",
+    "price": 933.69,
+    "seller": {
+      "Id": 12,
+      "FirstName": "Jeremy",
+      "LastName": "Woods",
+      "Age": 20,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "pain relief",
+    "price": 938.23,
+    "seller": {
+      "Id": 33,
+      "FirstName": "Anna",
+      "LastName": "Clark",
+      "Age": 41,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Glipizide and Metformin Hydrochloride",
+    "price": 953.60,
+    "seller": {
+      "Id": 4,
+      "FirstName": "Jacqueline",
+      "LastName": "Perez",
+      "Age": 25,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Metformin Hydrochloride",
+    "price": 953.99,
+    "seller": {
+      "Id": 42,
+      "FirstName": "Brandon",
+      "LastName": "Fuller",
+      "Age": 30,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Homeopathic Rheumatism",
+    "price": 967.08,
+    "seller": {
+      "Id": 56,
+      "FirstName": "Doris",
+      "LastName": "Cook",
+      "Age": 61,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "NEO-POLY-BAC HYDRO",
+    "price": 967.32,
+    "seller": {
+      "Id": 56,
+      "FirstName": "Doris",
+      "LastName": "Cook",
+      "Age": 61,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Clearskin",
+    "price": 968.59,
+    "seller": {
+      "Id": 4,
+      "FirstName": "Jacqueline",
+      "LastName": "Perez",
+      "Age": 25,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Dawn Ultra Antibacterial Hand",
+    "price": 969.86,
+    "seller": {
+      "Id": 11,
+      "FirstName": "Billy",
+      "LastName": "Parker",
+      "Age": 68,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Megestrol Acetate",
+    "price": 976.15,
+    "seller": {
+      "Id": 37,
+      "FirstName": "Gary",
+      "LastName": "Stevens",
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Smooth texture Orange flavor",
+    "price": 976.65,
+    "seller": {
+      "Id": 52,
+      "FirstName": "Benjamin",
+      "LastName": "Henry",
+      "Age": 63,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  },
+  {
+    "name": "Retin-A MICRO",
+    "price": 995.98,
+    "seller": {
+      "Id": 31,
+      "FirstName": "Clarence",
+      "LastName": "Fowler",
+      "Age": 50,
+      "ProductsBought": [],
+      "ProductsSold": []
+    }
+  }
+]

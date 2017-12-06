@@ -5,7 +5,7 @@
     using ProductsShop.Data;
     using System.Linq;
 
-    internal static class Task2_JsonQueryAndExportData
+    internal static class JsonQueriesAndExportData
     {
         /// <summary>
         /// Get all products in a specified price range:  500 to 1000 (inclusive). 

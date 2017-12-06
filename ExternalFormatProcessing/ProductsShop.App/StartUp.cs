@@ -2,6 +2,7 @@
 {
     using System;
     using ProductsShop.Data;
+    using System.IO;
 
     public class StartUp
     {
@@ -23,7 +24,7 @@
 
             if (Console.ReadLine().ToLower() == "y")
             {
-                Task1_ImportJSONData.ReadJsonFilesAndFillDb();
+                ImportJSONData.ReadJsonFilesAndFillDb();
             }
 
             // Task 2
@@ -33,10 +34,19 @@
             {
                 using (var db = new ProductsShopContext())
                 {
-                    string productsInRange500to1000 = Task2_JsonQueryAndExportData.GetProductsInRange(db);
-                    string successfullySoldProducts = Task2_JsonQueryAndExportData.GetSuccessfullySoldProducts(db);
-                    string categoriesByProduct = Task2_JsonQueryAndExportData.GetCategoriesByProductsCount(db);
-                    string usersAndProducts = Task2_JsonQueryAndExportData.GetUsersBySoldProducts(db);
+                    string productsInRange500to1000 = JsonQueriesAndExportData.GetProductsInRange(db);
+                    string successfullySoldProducts = JsonQueriesAndExportData.GetSuccessfullySoldProducts(db);
+                    string categoriesByProduct = JsonQueriesAndExportData.GetCategoriesByProductsCount(db);
+                    string usersAndProducts = JsonQueriesAndExportData.GetUsersBySoldProducts(db);
+
+                    Console.WriteLine("Write JSON queries to files?");
+                    if (Console.ReadLine().ToLower() == "y")
+                    {
+                        File.WriteAllText(@"../Queries/query1.json", productsInRange500to1000);
+                        File.WriteAllText(@"../Queries/query2.json", successfullySoldProducts);
+                        File.WriteAllText(@"../Queries/query3.json", categoriesByProduct);
+                        File.WriteAllText(@"../Queries/query4.json", usersAndProducts);
+                    }
                 }
             }
 
@@ -47,7 +57,7 @@
             {
                 using (var db = new ProductsShopContext())
                 {
-                    Task3_1_ImportXMLData.ImportXMLDataAndPopulateDB();
+                    ImportXMLData.ImportXMLDataAndPopulateDB();
                 }
             }
 
@@ -57,9 +67,19 @@
             {
                 using (var db = new ProductsShopContext())
                 {
-                    string task3_2_1result = Task3_2_QueriesAndXMLExport.GetProductsInRange(db);
-                    string task3_2_2result = Task3_2_QueriesAndXMLExport.GetSuccessfullySoldProducts(db);
-                    string task3_2_3result = Task3_2_QueriesAndXMLExport.GetCategoriesByProductsCount(db);
+                    string productsInRange = XMLQueriesAndExportData.GetProductsInRange(db);
+                    string successfullySoldProducts = XMLQueriesAndExportData.GetSuccessfullySoldProducts(db);
+                    string categoriesByProductsCount = XMLQueriesAndExportData.GetCategoriesByProductsCount(db);
+                    string usersAndProducts = XMLQueriesAndExportData.GetUsersAndProducts(db);
+
+                    Console.WriteLine("Write XML queries to files?");
+                    if (Console.ReadLine().ToLower() == "y")
+                    {
+                        File.WriteAllText(@"../Queries/query1.xml", productsInRange);
+                        File.WriteAllText(@"../Queries/query2.xml", successfullySoldProducts);
+                        File.WriteAllText(@"../Queries/query3.xml", categoriesByProductsCount);
+                        File.WriteAllText(@"../Queries/query4.xml", usersAndProducts);
+                    }
                 }
             }
         }
