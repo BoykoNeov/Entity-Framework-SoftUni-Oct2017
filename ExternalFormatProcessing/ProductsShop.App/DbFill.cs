@@ -1,13 +1,18 @@
-﻿using ProductsShop.Data;
-using ProductsShop.Models;
-using System.Collections.Generic;
-using System;
-using System.Linq;
-
-namespace ProductsShop.App
+﻿namespace ProductsShop.App
 {
+    using ProductsShop.Data;
+    using ProductsShop.Models;
+    using System.Collections.Generic;
+    using System;
+    using System.Linq;
+
     public static class DbFill
     {
+        /// <summary>
+        /// Imports Users to ProductShop database
+        /// </summary>
+        /// <param name="users">PhotoShareContext Users</param>
+        /// <param name="context">ProductsShopContext</param>
         public static void ImportUsersToDb(IEnumerable<User> users, ProductsShopContext context)
         {
             context.Users.AddRange(users);
@@ -15,6 +20,11 @@ namespace ProductsShop.App
             context.SaveChanges();
         }
 
+        /// <summary>
+        /// Imports Categories to ProductShop database
+        /// </summary>
+        /// <param name="categories"></param>
+        /// <param name="context"></param>
         public static void ImportCategoriesToDb(IEnumerable<Category> categories, ProductsShopContext context)
         {
             context.Categories.AddRange(categories);
@@ -22,6 +32,13 @@ namespace ProductsShop.App
             context.SaveChanges();
         }
 
+        /// <summary>
+        /// Important! * DB should already contain users and categories, in order for 'ImportProductsToDb to function properly'
+        /// Imports products to ProductShop database
+        /// </summary>
+        /// <param name="products">Ienumarable of products for ProductShop</param>
+        /// <param name="context">ProductShop db context</param>
+        /// <param name="rnd">instance of System.Random</param>
         public static void ImportProductsToDb(IEnumerable<Product> products, ProductsShopContext context, Random rnd)
         {
             HashSet<int> usersIDs = context.Users

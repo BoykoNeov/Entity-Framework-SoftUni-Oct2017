@@ -1,11 +1,10 @@
-﻿using System.Linq;
-using ProductsShop.Data;
-using ProductsShop.Models;
-using Newtonsoft.Json;
-using Microsoft.EntityFrameworkCore;
-
-namespace ProductsShop.App
+﻿namespace ProductsShop.App
 {
+    using Microsoft.EntityFrameworkCore;
+    using Newtonsoft.Json;
+    using ProductsShop.Data;
+    using System.Linq;
+
     internal static class Task2_JsonQueryAndExportData
     {
         /// <summary>
@@ -66,6 +65,13 @@ namespace ProductsShop.App
             return result;
         }
 
+        /// <summary>
+        /// Get all categories. Order them by the category’s name. For each category select its name,
+        /// the number of products, the average price of those products and the total revenue (total price sum)
+        /// of those products (regardless if they have a buyer or not).
+        /// </summary>
+        /// <param name="context">ProductsShopContext</param>
+        /// <returns>result to JSON</returns>
         internal static string GetCategoriesByProductsCount(ProductsShopContext context)
         {
             var categoreisByProductsCount = context.Categories
@@ -85,9 +91,17 @@ namespace ProductsShop.App
             return string.Empty;
         }
 
+        /// <summary>
+        /// Get all users who have at least 1 sold product. Order them by the number of sold products (from highest to lowest), 
+        /// then by last name (ascending). Select only their first and last name,
+        /// age and for each product - name and price.
+        ///Export the results to JSON.
+        /// </summary>
+        /// <param name="context">ProductsShopContext</param>
+        /// <returns>results to JSON</returns>
         internal static string GetUsersBySoldProducts(ProductsShopContext context)
         {
-            var UsersBySoldProducts = context.Users
+            var usersBySoldProducts = context.Users
                                 .Include(u => u.ProductsSold)
                                 .Where(u => u.ProductsSold.Any(p => p.BuyerId != null))
                                 .OrderByDescending(u => u.ProductsSold.Where(p => p.BuyerId != 0).Count())
@@ -97,7 +111,7 @@ namespace ProductsShop.App
                                     firstName = u.FirstName,
                                     lastName = u.LastName,
                                     age = u.Age,
-                                    soldProducts = u.ProductsSold.Select(p => new
+                                    soldProducts = (new
                                     {
                                         count = u.ProductsSold.Where(pr => pr.BuyerId != 0).Count(),
                                         products = u.ProductsSold.Select(pr => new
@@ -108,8 +122,14 @@ namespace ProductsShop.App
                                     })
                                 });
 
-            string result = JsonConvert.SerializeObject(UsersBySoldProducts, Formatting.Indented);
-            System.Console.WriteLine(result);
+            var usersToSerialize = new
+            {
+                usersCount = usersBySoldProducts.Count(),
+                users = usersBySoldProducts
+            };
+
+            string result = JsonConvert.SerializeObject(usersToSerialize, Formatting.Indented);
+         // System.Console.WriteLine(result);
             return result;
         }
     }
