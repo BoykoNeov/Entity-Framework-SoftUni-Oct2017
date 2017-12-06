@@ -6,7 +6,7 @@
     using System;
     using System.Linq;
 
-    public static class DbFill
+    public static class JSONDbFill
     {
         /// <summary>
         /// Imports Users to ProductShop database

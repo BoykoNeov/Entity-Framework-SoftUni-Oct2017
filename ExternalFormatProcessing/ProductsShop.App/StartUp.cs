@@ -8,7 +8,19 @@
         public static void Main()
         {
             // Task 1 Also useful for reseting the db tables and filling them anew
-            Console.WriteLine(@"Delete the old one (if exists) and create a new DB, then read JSON files and fill them in db (Sure, that far from best practice) ? (press 'y' for Yes)");
+            Console.WriteLine(@"Delete the old one (if exists) and create a new DB? (press 'y' for Yes)");
+
+            if (Console.ReadLine().ToLower() == "y")
+            {
+                using (ProductsShopContext dbContext = new ProductsShopContext())
+                {
+                    dbContext.Database.EnsureDeleted();
+                    dbContext.Database.EnsureCreated();
+                }
+            }
+
+            Console.WriteLine("Read JSON files and fill them in db? (press 'y' for Yes)");
+
             if (Console.ReadLine().ToLower() == "y")
             {
                 Task1_ImportData.ReadJsonFilesAndFillDb();

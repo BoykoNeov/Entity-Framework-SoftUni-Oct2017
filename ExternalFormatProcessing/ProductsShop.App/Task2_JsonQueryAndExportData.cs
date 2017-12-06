@@ -27,7 +27,13 @@
                  .OrderBy(a => a.price)
                  .ToArray();
 
-            string result = JsonConvert.SerializeObject(products);
+            string result = JsonConvert.SerializeObject(products
+                // Ignores default values (NULLs in nullables)
+                , Formatting.Indented, new JsonSerializerSettings
+                {
+                    DefaultValueHandling = DefaultValueHandling.Ignore
+                }
+                );
             return result;
         }
 

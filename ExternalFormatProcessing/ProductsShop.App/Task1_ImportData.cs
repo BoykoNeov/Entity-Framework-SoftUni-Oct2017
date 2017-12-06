@@ -27,12 +27,9 @@
 
             using (dbContext)
             {
-                dbContext.Database.EnsureDeleted();
-                dbContext.Database.EnsureCreated();
-
-                DbFill.ImportUsersToDb(UsersFromJSON, dbContext);
-                DbFill.ImportCategoriesToDb(CategoriesFromJSON, dbContext);
-                DbFill.ImportProductsToDb(ProductsFromJSON, dbContext, randomInstance);
+                JSONDbFill.ImportUsersToDb(UsersFromJSON, dbContext);
+                JSONDbFill.ImportCategoriesToDb(CategoriesFromJSON, dbContext);
+                JSONDbFill.ImportProductsToDb(ProductsFromJSON, dbContext, randomInstance);
             }
         }
     }
