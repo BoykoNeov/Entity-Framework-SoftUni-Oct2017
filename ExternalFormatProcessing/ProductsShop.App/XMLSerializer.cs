@@ -6,21 +6,32 @@
 
     internal static class XMLSerializer
     {
-        internal static string SerializeXML(XDocument xObject)
+        internal static string SerializeXML(XDocument xObject, bool identation)
         {
-            string result;
+            string result = string.Empty;
 
             using (var stringWriter = new StringWriter())
             {
-                XmlWriterSettings settings = new XmlWriterSettings
-                {
-                    Indent = true,
-                    IndentChars = "  ",
-                    NewLineChars = "\r\n",
-                    NewLineHandling = NewLineHandling.Replace
-                };
+                XmlWriter xmlTextWriter;
 
-                using (var xmlTextWriter = XmlWriter.Create(stringWriter, settings))
+                if (identation)
+                {
+                    XmlWriterSettings settings = new XmlWriterSettings
+                    {
+                        Indent = true,
+                        IndentChars = "  ",
+                        NewLineChars = "\r\n",
+                        NewLineHandling = NewLineHandling.Replace
+                    };
+
+                    xmlTextWriter = XmlWriter.Create(stringWriter, settings);
+                }
+                else
+                {
+                    xmlTextWriter = XmlWriter.Create(stringWriter);
+                }
+
+                using (xmlTextWriter)
                 {
                     xObject.WriteTo(xmlTextWriter);
                     xmlTextWriter.Flush();

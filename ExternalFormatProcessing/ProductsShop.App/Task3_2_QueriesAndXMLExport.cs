@@ -2,7 +2,6 @@
 {
     using Microsoft.EntityFrameworkCore;
     using ProductsShop.Data;
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Xml.Linq;
@@ -29,8 +28,8 @@
                 xProducts.Root.Add(new XElement("product", new XAttribute("name", item.name), new XAttribute("price", item.price), new XAttribute("seller", item.seller)));
             }
 
-            string result = XMLSerializer.SerializeXML(xProducts);
-            // Console.WriteLine(result);
+            string result = XMLSerializer.SerializeXML(xProducts, true);
+            // System.Console.WriteLine(result);
             return result;
         }
 
@@ -82,8 +81,38 @@
                 xProducts.Root.Add(user);
             }
 
-            string result = XMLSerializer.SerializeXML(xProducts);
-            // Console.WriteLine(result);
+            string result = XMLSerializer.SerializeXML(xProducts, true);
+            // System.Console.WriteLine(result);
+            return result;
+        }
+
+        internal static string GetCategoriesByProductsCount(ProductsShopContext context)
+        {
+            XDocument xCategories = new XDocument();
+            xCategories.Add(new XElement("categories"));
+
+            var categoreisByProductsCount = context.Categories
+                .Include(p => p.ThisCategoryProducts)
+                .ThenInclude(cp => cp.Product)
+                .OrderBy(cp => cp.Name)
+                .Select(cp => new
+                {
+                    category = cp.Name,
+                    productsCount = cp.ThisCategoryProducts.Count == 0 ? 0 : cp.ThisCategoryProducts.Select(t => t.Product).Count(),
+                    averagePrice = cp.ThisCategoryProducts.Count == 0 ? 0 : cp.ThisCategoryProducts.Select(t => t.Product.Price).Average(),
+                    totalRevenue = cp.ThisCategoryProducts.Count == 0 ? 0 : cp.ThisCategoryProducts.Select(t => t.Product.Price).Sum(),
+                });
+
+            foreach (var c in categoreisByProductsCount)
+            {
+                xCategories.Root.Add(new XElement("category", new XAttribute("name", c.category),
+                    new XElement("products-count", c.productsCount),
+                    new XElement("average-price", c.averagePrice),
+                    new XElement("total-revenue", c.totalRevenue)));
+            }
+
+            string result = XMLSerializer.SerializeXML(xCategories, true);
+            System.Console.WriteLine(result);
             return result;
         }
     }

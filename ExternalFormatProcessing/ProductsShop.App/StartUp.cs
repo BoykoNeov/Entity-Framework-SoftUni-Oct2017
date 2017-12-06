@@ -59,6 +59,7 @@
                 {
                     string task3_2_1result = Task3_2_QueriesAndXMLExport.GetProductsInRange(db);
                     string task3_2_2result = Task3_2_QueriesAndXMLExport.GetSuccessfullySoldProducts(db);
+                    string task3_2_3result = Task3_2_QueriesAndXMLExport.GetCategoriesByProductsCount(db);
                 }
             }
         }
