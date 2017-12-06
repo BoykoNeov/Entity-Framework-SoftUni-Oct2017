@@ -23,22 +23,44 @@
 
             if (Console.ReadLine().ToLower() == "y")
             {
-                Task1_ImportData.ReadJsonFilesAndFillDb();
+                Task1_ImportJSONData.ReadJsonFilesAndFillDb();
             }
 
-            var db = new ProductsShopContext();
-
             // Task 2
-            using (db)
+            Console.WriteLine("Perform task 2? (press 'y' for Yes)");
+
+            if (Console.ReadLine().ToLower() == "y")
             {
-                string productsInRange500to1000 = Task2_JsonQueryAndExportData.GetProductsInRange(db);
-                string successfullySoldProducts = Task2_JsonQueryAndExportData.GetSuccessfullySoldProducts(db);
-                string categoriesByProduct = Task2_JsonQueryAndExportData.GetCategoriesByProductsCount(db);
-                string usersAndProducts = Task2_JsonQueryAndExportData.GetUsersBySoldProducts(db);
+                using (var db = new ProductsShopContext())
+                {
+                    string productsInRange500to1000 = Task2_JsonQueryAndExportData.GetProductsInRange(db);
+                    string successfullySoldProducts = Task2_JsonQueryAndExportData.GetSuccessfullySoldProducts(db);
+                    string categoriesByProduct = Task2_JsonQueryAndExportData.GetCategoriesByProductsCount(db);
+                    string usersAndProducts = Task2_JsonQueryAndExportData.GetUsersBySoldProducts(db);
+                }
             }
 
             // Task 3
+            Console.WriteLine("Perform task 3.1 (import XML to db)? (press 'y' for Yes)");
 
+            if (Console.ReadLine().ToLower() == "y")
+            {
+                using (var db = new ProductsShopContext())
+                {
+                    Task3_1_ImportXMLData.ImportXMLDataAndPopulateDB();
+                }
+            }
+
+            Console.WriteLine("Perform task 3.2 (XML queries and export)? (press 'y' for Yes)");
+
+            if (Console.ReadLine().ToLower() == "y")
+            {
+                using (var db = new ProductsShopContext())
+                {
+                    string task3_2_1result = Task3_2_QueriesAndXMLExport.GetProductsInRange(db);
+                    string task3_2_2result = Task3_2_QueriesAndXMLExport.GetSuccessfullySoldProducts(db);
+                }
+            }
         }
     }
 }

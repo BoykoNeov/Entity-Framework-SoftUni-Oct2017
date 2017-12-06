@@ -9,12 +9,10 @@
 /// <summary>
 /// Definitely not written to the standarts of quality programming code, but time is insufficient...
 /// </summary>
-    public static class Task1_ImportData
+    public static class Task1_ImportJSONData
     {
         public static void ReadJsonFilesAndFillDb()
         {
-            Random randomInstance = new Random();
-
             string jsonCategoriesInput = File.ReadAllText(@"../Resources/categories.json");
             string jsonUsersInput = File.ReadAllText(@"../Resources/users.json");
             string jsonProductsInput = File.ReadAllText(@"../Resources/products.json");
@@ -24,12 +22,13 @@
             Product[] ProductsFromJSON = JsonConvert.DeserializeObject<Product[]>(jsonProductsInput);
 
             ProductsShopContext dbContext = new ProductsShopContext();
+            Random randomInstance = new Random();
 
             using (dbContext)
             {
-                JSONDbFill.ImportUsersToDb(UsersFromJSON, dbContext);
-                JSONDbFill.ImportCategoriesToDb(CategoriesFromJSON, dbContext);
-                JSONDbFill.ImportProductsToDb(ProductsFromJSON, dbContext, randomInstance);
+                DbFill.ImportUsersToDb(UsersFromJSON, dbContext);
+                DbFill.ImportCategoriesToDb(CategoriesFromJSON, dbContext);
+                DbFill.ImportProductsToDb(ProductsFromJSON, dbContext, randomInstance);
             }
         }
     }

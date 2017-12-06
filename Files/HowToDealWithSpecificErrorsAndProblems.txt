@@ -65,3 +65,42 @@ Composite Primary Key:
 build.HasKey(t => new {t.ActiveQuestionId, t.QuestionId}); 
 
 -------------------------------------------------------------------------------------------
+
+Unique constraint
+**********************************************
+
+modelBuilder 
+    .Entity<User>() 
+    .Property(t => t.FirstName) 
+    .IsRequired()
+    .HasMaxLength(60)
+    .HasColumnAnnotation(
+        IndexAnnotation.AnnotationName, 
+        new IndexAnnotation(
+            new IndexAttribute("IX_FirstNameLastName", 1) { IsUnique = true }));
+
+modelBuilder 
+    .Entity<User>() 
+    .Property(t => t.LastName) 
+    .IsRequired()
+    .HasMaxLength(60)
+    .HasColumnAnnotation(
+        IndexAnnotation.AnnotationName, 
+        new IndexAnnotation(
+            new IndexAttribute("IX_FirstNameLastName", 2) { IsUnique = true }));
+
+или:
+[Index("IX_FirstNameLastName", 1, IsUnique = true)]
+public string FirstName { get; set; }
+
+[Index("IX_FirstNameLastName", 2, IsUnique = true)]
+public string LastName { get; set; }
+
+-------------------------------------------------------------------------------------------
+Replace \r\n with newlines in Notepad++ (useful for xml)
+**********************************************
+
+Press CTRL-h and the Replace dialog will open. Type \\r\\n in "Find what" and \r\n in "Replace with".
+Finally, select search mode Extended (\r, \n, \t, \x..., \0) and click "Replace All".
+
+-------------------------------------------------------------------------------------------
