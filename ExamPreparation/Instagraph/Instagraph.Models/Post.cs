@@ -4,6 +4,11 @@
 
     public class Post
     {
+        public Post()
+        {
+            this.Comments = new HashSet<Comment>();
+        }
+
         public int Id { get; set; }
         public string Caption { get; set; }
         public int UserId { get; set; }

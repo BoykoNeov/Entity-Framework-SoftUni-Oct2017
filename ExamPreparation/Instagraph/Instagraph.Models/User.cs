@@ -4,6 +4,14 @@
 
    public class User
     {
+        public User()
+        {
+            this.Followers = new HashSet<UserFollower>();
+            this.UsersFollowing = new HashSet<UserFollower>();
+            this.Posts = new HashSet<Post>();
+            this.Comments = new HashSet<Comment>();
+        }
+
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
