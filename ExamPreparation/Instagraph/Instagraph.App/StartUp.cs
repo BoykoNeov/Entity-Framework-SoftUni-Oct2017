@@ -15,11 +15,11 @@ namespace Instagraph.App
         {
             Mapper.Initialize(options => options.AddProfile<InstagraphProfile>());
 
-            //Console.WriteLine(ResetDatabase());
+            Console.WriteLine(ResetDatabase());
 
-            //Console.WriteLine(ImportData());
+            Console.WriteLine(ImportData());
 
-             ExportData();
+            ExportData();
         }
 
         private static string ImportData()
@@ -70,7 +70,7 @@ namespace Instagraph.App
                 File.WriteAllText("files/output/CommentsOnPosts.xml", commentsOutput);
             }
         }
-        
+
         private static string ResetDatabase()
         {
             using (var context = new InstagraphContext())
