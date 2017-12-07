@@ -15,7 +15,7 @@ namespace Instagraph.App
         {
             Mapper.Initialize(options => options.AddProfile<InstagraphProfile>());
 
-           // Console.WriteLine(ResetDatabase());
+            Console.WriteLine(ResetDatabase());
 
            // Console.WriteLine(ImportData());
 
