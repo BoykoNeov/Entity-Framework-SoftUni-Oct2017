@@ -19,7 +19,7 @@ namespace Instagraph.App
 
             Console.WriteLine(ImportData());
 
-            // ExportData();
+             ExportData();
         }
 
         private static string ImportData()
@@ -40,13 +40,13 @@ namespace Instagraph.App
 
                 sb.AppendLine(Deserializer.ImportFollowers(context, followersJson));
 
-                //string postsXml = File.ReadAllText("files/input/posts.xml");
+                string postsXml = File.ReadAllText("files/input/posts.xml");
 
-                //sb.AppendLine(Deserializer.ImportPosts(context, postsXml));
+                sb.AppendLine(Deserializer.ImportPosts(context, postsXml));
 
-                //string commentsXml = File.ReadAllText("files/input/comments.xml");
+                string commentsXml = File.ReadAllText("files/input/comments.xml");
 
-                //sb.AppendLine(Deserializer.ImportComments(context, commentsXml));
+                sb.AppendLine(Deserializer.ImportComments(context, commentsXml));
             }
 
             string result = sb.ToString().Trim();

@@ -23,9 +23,16 @@ namespace Instagraph.DataProcessor
 
             foreach (Picture pic in PicturesFromJSON)
             {
-                bool hasPath = pic.Path != null;
-                bool pathIsUnique = !paths.Contains(pic.Path);
-                bool sizeIsBiggerThanZero = pic.Size > 0;
+                bool hasPath = !string.IsNullOrWhiteSpace(pic.Path);
+
+                bool pathIsUnique = false;
+
+                if (hasPath)
+                {
+                    pathIsUnique = !paths.Contains(pic.Path);
+                }
+
+                bool sizeIsBiggerThanZero = pic.Size > 0m;
 
                 if (hasPath && pathIsUnique && sizeIsBiggerThanZero)
                 {
@@ -40,7 +47,7 @@ namespace Instagraph.DataProcessor
             }
 
             context.SaveChanges();
-            string result = sb.ToString();
+            string result = sb.ToString().Trim();
             return result;
         }
 
@@ -109,9 +116,11 @@ namespace Instagraph.DataProcessor
             foreach (UserFollowerDTO userFollowerDTO in usersFollowerDTOs)
             {
                 bool validInput = !string.IsNullOrWhiteSpace(userFollowerDTO.User) && !string.IsNullOrWhiteSpace(userFollowerDTO.Follower);
-                bool userAndFollowerAreDifferent = !userFollowerDTO.Follower.Equals(userFollowerDTO.User);
+                //  bool userAndFollowerAreDifferent = !userFollowerDTO.Follower.Equals(userFollowerDTO.User);
 
-                if (validInput && userAndFollowerAreDifferent)
+                if (validInput
+                    //&& userAndFollowerAreDifferent
+                    )
                 {
                     bool userExists = users.ContainsKey(userFollowerDTO.User);
                     bool followerExists = users.ContainsKey(userFollowerDTO.Follower);
@@ -121,7 +130,7 @@ namespace Instagraph.DataProcessor
                         User user = users[userFollowerDTO.User];
                         User follower = users[userFollowerDTO.Follower];
 
-                        bool pairAlreadyExists = alreadyAddedPairs.Contains(user.Username + follower.Username);
+                        bool pairAlreadyExists = alreadyAddedPairs.Contains(userFollowerDTO.User + userFollowerDTO.Follower);
 
                         if (!pairAlreadyExists)
                         {
@@ -134,8 +143,8 @@ namespace Instagraph.DataProcessor
                             };
 
                             context.UsersFollowers.Add(newUserFollower);
-                            sb.AppendLine($"Successfully imported Follower {follower.Username} to User {user.Username}");
-                            alreadyAddedPairs.Add(user.Username + follower.Username);
+                            sb.AppendLine($"Successfully imported Follower {userFollowerDTO.Follower} to User {userFollowerDTO.User}.");
+                            alreadyAddedPairs.Add(userFollowerDTO.User + userFollowerDTO.Follower);
 
                             continue;
                         }
@@ -147,18 +156,134 @@ namespace Instagraph.DataProcessor
 
             context.SaveChanges();
 
-            string result = sb.ToString();
+            string result = sb.ToString().Trim();
             return result;
         }
 
         public static string ImportPosts(InstagraphContext context, string xmlString)
         {
-            throw new NotImplementedException();
+            Dictionary<string, User> users = context.Users.ToDictionary(u => u.Username);
+            Dictionary<string, Picture> pictures = context.Pictures.ToDictionary(u => u.Path);
+            StringBuilder sb = new StringBuilder();
+
+            XDocument xmlPostsDoc = XDocument.Parse(xmlString);
+            IEnumerable<XElement> xPosts = xmlPostsDoc.Root.Elements();
+            List<Post> posts = new List<Post>();
+
+            foreach (XElement xPost in xPosts)
+            {
+                string username = xPost.Element("user")?.Value;
+                string caption = xPost.Element("caption")?.Value;
+                string picturePath = xPost.Element("picture")?.Value;
+
+                bool usernameIsNotNullOrEmpty = !string.IsNullOrWhiteSpace(username);
+                bool captionIsNotNullOrEmpty = !string.IsNullOrWhiteSpace(caption);
+                bool pictureIsNotNullOrEmpty = !string.IsNullOrWhiteSpace(picturePath);
+
+                bool userExists = false;
+
+                if (usernameIsNotNullOrEmpty)
+                {
+                    userExists = users.ContainsKey(username);
+                }
+
+                bool pictureExists = false;
+
+                if (pictureIsNotNullOrEmpty)
+                {
+                    pictureExists = pictures.ContainsKey(picturePath);
+                }
+
+                if (captionIsNotNullOrEmpty && userExists && pictureExists)
+                {
+                    User user = users[username];
+                    Picture picture = pictures[picturePath];
+
+                    Post newPost = new Post()
+                    {
+                        Caption = caption,
+                        UserId = user.Id,
+                        PictureId = picture.Id
+                    };
+
+                    posts.Add(newPost);
+                    sb.AppendLine($"Successfully imported Post {caption}.");
+                }
+                else
+                {
+                    sb.AppendLine("Error: Invalid data.");
+                }
+            }
+
+            context.AddRange(posts);
+            context.SaveChanges();
+
+            string result = sb.ToString().Trim();
+            return result;
         }
 
         public static string ImportComments(InstagraphContext context, string xmlString)
         {
-            throw new NotImplementedException();
+            Dictionary<int, Post> posts = context.Posts.ToDictionary(p => p.Id);
+            Dictionary<string, User> users = context.Users.ToDictionary(u => u.Username);
+            StringBuilder sb = new StringBuilder();
+
+            XDocument xmlCommentsDoc = XDocument.Parse(xmlString);
+            IEnumerable<XElement> xComments = xmlCommentsDoc.Root.Elements();
+            List<Comment> comments = new List<Comment>();
+
+            foreach (XElement xComment in xComments)
+            {
+                string commentUsername = xComment.Element("user")?.Value;
+                bool postIdParseSuccess = int.TryParse(xComment.Element("post")?.Attribute("id")?.Value, out int commentPostId);
+                string commentContent = xComment.Element("content")?.Value;
+
+                bool userExists = false;
+
+                if (!string.IsNullOrWhiteSpace(commentUsername))
+                {
+                    userExists = users.ContainsKey(commentUsername);
+                }
+
+                bool postExists = false;
+
+                if (postIdParseSuccess)
+                {
+                    postExists = posts.ContainsKey(commentPostId);
+                }
+
+                bool commentIsValid = false;
+                if (!string.IsNullOrWhiteSpace(commentContent) && commentContent.Length <= 250)
+                {
+                    commentIsValid = true;
+                }
+
+                if (userExists && postExists && commentIsValid)
+                {
+                    User commentingUser = users[commentUsername];
+                    Post commentedPost = posts[commentPostId];
+
+                    Comment newComment = new Comment()
+                    {
+                        UserId = commentingUser.Id,
+                        PostId = commentedPost.Id,
+                        Content = commentContent
+                    };
+
+                    sb.AppendLine($"Successfully imported Comment {commentContent}.");
+                    comments.Add(newComment);
+                }
+                else
+                {
+                    sb.AppendLine("Error: Invalid data.");
+                }
+            }
+
+            context.Comments.AddRange(comments);
+            context.SaveChanges();
+
+            string result = sb.ToString();
+            return result;
         }
     }
 }
