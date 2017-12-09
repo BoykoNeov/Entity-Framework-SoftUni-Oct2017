@@ -14,7 +14,7 @@ namespace Stations.Data
 		{
 		}
 
-        public DbSet<CustomerCard> CustomerCards { get; set; }
+        public DbSet<CustomerCard> Cards { get; set; }
         public DbSet<SeatingClass> SeatingClasses { get; set; } 
         public DbSet<Station> Stations { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
